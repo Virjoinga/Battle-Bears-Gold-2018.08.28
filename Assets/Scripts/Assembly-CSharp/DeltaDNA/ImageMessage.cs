@@ -271,8 +271,8 @@ namespace DeltaDNA
 					{
 					default:
 					{
-						int num;
-						if (num == 1)
+                                int num = 0;
+                                if (num == 1)
 						{
 							array[0] = new Color32(0, 0, 0, 0);
 						}
