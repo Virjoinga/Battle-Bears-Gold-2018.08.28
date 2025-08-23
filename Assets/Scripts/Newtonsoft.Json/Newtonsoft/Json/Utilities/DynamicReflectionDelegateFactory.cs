@@ -69,13 +69,13 @@ namespace Newtonsoft.Json.Utilities
 			generator.Return();
 		}
 
-		public override Func<T> CreateDefaultConstructor<T>(Type type)
+		public override Newtonsoft.Json.Serialization.Func<T> CreateDefaultConstructor<T>(Type type)
 		{
 			DynamicMethod dynamicMethod = CreateDynamicMethod("Create" + type.FullName, typeof(T), ReflectionUtils.EmptyTypes, type);
 			dynamicMethod.InitLocals = true;
 			ILGenerator iLGenerator = dynamicMethod.GetILGenerator();
 			GenerateCreateDefaultConstructorIL(type, iLGenerator);
-			return (Func<T>)dynamicMethod.CreateDelegate(typeof(Func<T>));
+			return (Newtonsoft.Json.Serialization.Func<T>)dynamicMethod.CreateDelegate(typeof(Func<T>));
 		}
 
 		private void GenerateCreateDefaultConstructorIL(Type type, ILGenerator generator)
@@ -98,12 +98,12 @@ namespace Newtonsoft.Json.Utilities
 			generator.Return();
 		}
 
-		public override Func<T, object> CreateGet<T>(PropertyInfo propertyInfo)
+		public override Newtonsoft.Json.Serialization.Func<T, object> CreateGet<T>(PropertyInfo propertyInfo)
 		{
 			DynamicMethod dynamicMethod = CreateDynamicMethod("Get" + propertyInfo.Name, typeof(T), new Type[1] { typeof(object) }, propertyInfo.DeclaringType);
 			ILGenerator iLGenerator = dynamicMethod.GetILGenerator();
 			GenerateCreateGetPropertyIL(propertyInfo, iLGenerator);
-			return (Func<T, object>)dynamicMethod.CreateDelegate(typeof(Func<T, object>));
+			return (Newtonsoft.Json.Serialization.Func<T, object>)dynamicMethod.CreateDelegate(typeof(Func<T, object>));
 		}
 
 		private void GenerateCreateGetPropertyIL(PropertyInfo propertyInfo, ILGenerator generator)
@@ -122,12 +122,12 @@ namespace Newtonsoft.Json.Utilities
 			generator.Return();
 		}
 
-		public override Func<T, object> CreateGet<T>(FieldInfo fieldInfo)
+		public override Newtonsoft.Json.Serialization.Func<T, object> CreateGet<T>(FieldInfo fieldInfo)
 		{
 			DynamicMethod dynamicMethod = CreateDynamicMethod("Get" + fieldInfo.Name, typeof(T), new Type[1] { typeof(object) }, fieldInfo.DeclaringType);
 			ILGenerator iLGenerator = dynamicMethod.GetILGenerator();
 			GenerateCreateGetFieldIL(fieldInfo, iLGenerator);
-			return (Func<T, object>)dynamicMethod.CreateDelegate(typeof(Func<T, object>));
+			return (Newtonsoft.Json.Serialization.Func<T, object>)dynamicMethod.CreateDelegate(typeof(Func<T, object>));
 		}
 
 		private void GenerateCreateGetFieldIL(FieldInfo fieldInfo, ILGenerator generator)
@@ -141,7 +141,7 @@ namespace Newtonsoft.Json.Utilities
 			generator.Return();
 		}
 
-		public override Action<T, object> CreateSet<T>(FieldInfo fieldInfo)
+		public override Newtonsoft.Json.Serialization.Action<T, object> CreateSet<T>(FieldInfo fieldInfo)
 		{
 			DynamicMethod dynamicMethod = CreateDynamicMethod("Set" + fieldInfo.Name, null, new Type[2]
 			{
@@ -150,7 +150,7 @@ namespace Newtonsoft.Json.Utilities
 			}, fieldInfo.DeclaringType);
 			ILGenerator iLGenerator = dynamicMethod.GetILGenerator();
 			GenerateCreateSetFieldIL(fieldInfo, iLGenerator);
-			return (Action<T, object>)dynamicMethod.CreateDelegate(typeof(Action<T, object>));
+			return (Newtonsoft.Json.Serialization.Action<T, object>)dynamicMethod.CreateDelegate(typeof(Action<T, object>));
 		}
 
 		internal static void GenerateCreateSetFieldIL(FieldInfo fieldInfo, ILGenerator generator)
@@ -165,7 +165,7 @@ namespace Newtonsoft.Json.Utilities
 			generator.Return();
 		}
 
-		public override Action<T, object> CreateSet<T>(PropertyInfo propertyInfo)
+		public override Newtonsoft.Json.Serialization.Action<T, object> CreateSet<T>(PropertyInfo propertyInfo)
 		{
 			DynamicMethod dynamicMethod = CreateDynamicMethod("Set" + propertyInfo.Name, null, new Type[2]
 			{
@@ -174,7 +174,7 @@ namespace Newtonsoft.Json.Utilities
 			}, propertyInfo.DeclaringType);
 			ILGenerator iLGenerator = dynamicMethod.GetILGenerator();
 			GenerateCreateSetPropertyIL(propertyInfo, iLGenerator);
-			return (Action<T, object>)dynamicMethod.CreateDelegate(typeof(Action<T, object>));
+			return (Newtonsoft.Json.Serialization.Action<T, object>)dynamicMethod.CreateDelegate(typeof(Action<T, object>));
 		}
 
 		internal static void GenerateCreateSetPropertyIL(PropertyInfo propertyInfo, ILGenerator generator)

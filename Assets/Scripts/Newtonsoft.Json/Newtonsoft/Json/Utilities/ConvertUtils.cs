@@ -61,7 +61,7 @@ namespace Newtonsoft.Json.Utilities
 			}
 		}
 
-		private static readonly ThreadSafeStore<TypeConvertKey, Func<object, object>> CastConverters = new ThreadSafeStore<TypeConvertKey, Func<object, object>>(CreateCastConverter);
+		private static readonly ThreadSafeStore<TypeConvertKey, Newtonsoft.Json.Serialization.Func<object, object>> CastConverters = new ThreadSafeStore<TypeConvertKey, Newtonsoft.Json.Serialization.Func<object, object>>(CreateCastConverter);
 
 		public static TypeCode GetTypeCode(this IConvertible convertible)
 		{
@@ -93,7 +93,7 @@ namespace Newtonsoft.Json.Utilities
 			return typeof(IConvertible).IsAssignableFrom(t);
 		}
 
-		private static Func<object, object> CreateCastConverter(TypeConvertKey t)
+		private static Newtonsoft.Json.Serialization.Func<object, object> CreateCastConverter(TypeConvertKey t)
 		{
 			MethodInfo method = t.TargetType.GetMethod("op_Implicit", new Type[1] { t.InitialType });
 			if (method == null)
@@ -218,7 +218,7 @@ namespace Newtonsoft.Json.Utilities
 				{
 					return value;
 				}
-				Func<object, object> func = CastConverters.Get(new TypeConvertKey(type, targetType));
+				Newtonsoft.Json.Serialization.Func<object, object> func = CastConverters.Get(new TypeConvertKey(type, targetType));
 				if (func != null)
 				{
 					return func(value);

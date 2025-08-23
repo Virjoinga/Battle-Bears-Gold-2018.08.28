@@ -10,9 +10,9 @@ namespace Newtonsoft.Json.Utilities
 
 		private Dictionary<TKey, TValue> _store;
 
-		private readonly Func<TKey, TValue> _creator;
+		private readonly Newtonsoft.Json.Serialization.Func<TKey, TValue> _creator;
 
-		public ThreadSafeStore(Func<TKey, TValue> creator)
+		public ThreadSafeStore(Newtonsoft.Json.Serialization.Func<TKey, TValue> creator)
 		{
 			if (creator == null)
 			{

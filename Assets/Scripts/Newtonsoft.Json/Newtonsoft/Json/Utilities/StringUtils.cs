@@ -79,7 +79,7 @@ namespace Newtonsoft.Json.Utilities
 			return new string(new char[6] { '\\', 'u', c2, c3, c4, c5 });
 		}
 
-		public static TSource ForgivingCaseSensitiveFind<TSource>(this IEnumerable<TSource> source, Func<TSource, string> valueSelector, string testValue)
+		public static TSource ForgivingCaseSensitiveFind<TSource>(this IEnumerable<TSource> source, Newtonsoft.Json.Serialization.Func<TSource, string> valueSelector, string testValue)
 		{
 			if (source == null)
 			{

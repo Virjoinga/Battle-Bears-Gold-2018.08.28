@@ -7,7 +7,7 @@ namespace Newtonsoft.Json.Utilities
 {
 	internal abstract class ReflectionDelegateFactory
 	{
-		public Func<T, object> CreateGet<T>(MemberInfo memberInfo)
+		public Newtonsoft.Json.Serialization.Func<T, object> CreateGet<T>(MemberInfo memberInfo)
 		{
 			PropertyInfo propertyInfo = memberInfo as PropertyInfo;
 			if (propertyInfo != null)
@@ -22,7 +22,7 @@ namespace Newtonsoft.Json.Utilities
 			throw new Exception("Could not create getter for {0}.".FormatWith(CultureInfo.InvariantCulture, memberInfo));
 		}
 
-		public Action<T, object> CreateSet<T>(MemberInfo memberInfo)
+		public Newtonsoft.Json.Serialization.Action<T, object> CreateSet<T>(MemberInfo memberInfo)
 		{
 			PropertyInfo propertyInfo = memberInfo as PropertyInfo;
 			if (propertyInfo != null)
@@ -39,14 +39,14 @@ namespace Newtonsoft.Json.Utilities
 
 		public abstract MethodCall<T, object> CreateMethodCall<T>(MethodBase method);
 
-		public abstract Func<T> CreateDefaultConstructor<T>(Type type);
+		public abstract Newtonsoft.Json.Serialization.Func<T> CreateDefaultConstructor<T>(Type type);
 
-		public abstract Func<T, object> CreateGet<T>(PropertyInfo propertyInfo);
+		public abstract Newtonsoft.Json.Serialization.Func<T, object> CreateGet<T>(PropertyInfo propertyInfo);
 
-		public abstract Func<T, object> CreateGet<T>(FieldInfo fieldInfo);
+		public abstract Newtonsoft.Json.Serialization.Func<T, object> CreateGet<T>(FieldInfo fieldInfo);
 
-		public abstract Action<T, object> CreateSet<T>(FieldInfo fieldInfo);
+		public abstract Newtonsoft.Json.Serialization.Action<T, object> CreateSet<T>(FieldInfo fieldInfo);
 
-		public abstract Action<T, object> CreateSet<T>(PropertyInfo propertyInfo);
+		public abstract Newtonsoft.Json.Serialization.Action<T, object> CreateSet<T>(PropertyInfo propertyInfo);
 	}
 }

@@ -580,7 +580,7 @@ namespace Newtonsoft.Json.Utilities
 			return CreateGeneric(genericTypeDefinition, innerTypes, (Type t, IList<object> a) => CreateInstance(t, a.ToArray()), args);
 		}
 
-		public static object CreateGeneric(Type genericTypeDefinition, IList<Type> innerTypes, Func<Type, IList<object>, object> instanceCreator, params object[] args)
+		public static object CreateGeneric(Type genericTypeDefinition, IList<Type> innerTypes, Newtonsoft.Json.Serialization.Func<Type, IList<object>, object> instanceCreator, params object[] args)
 		{
 			ValidationUtils.ArgumentNotNull(genericTypeDefinition, "genericTypeDefinition");
 			ValidationUtils.ArgumentNotNullOrEmpty(innerTypes, "innerTypes");

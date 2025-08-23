@@ -55,7 +55,7 @@ namespace Newtonsoft.Json.Utilities.LinqBridge
 			return _map.ContainsKey(key);
 		}
 
-		public IEnumerable<TResult> ApplyResultSelector<TResult>(Func<TKey, IEnumerable<TElement>, TResult> resultSelector)
+		public IEnumerable<TResult> ApplyResultSelector<TResult>(Newtonsoft.Json.Serialization.Func<TKey, IEnumerable<TElement>, TResult> resultSelector)
 		{
 			if (resultSelector == null)
 			{

@@ -27,7 +27,7 @@ namespace Newtonsoft.Json.Utilities
 			return (T o, object[] a) => method.Invoke(o, a);
 		}
 
-		public override Func<T> CreateDefaultConstructor<T>(Type type)
+		public override Newtonsoft.Json.Serialization.Func<T> CreateDefaultConstructor<T>(Type type)
 		{
 			ValidationUtils.ArgumentNotNull(type, "type");
 			if (type.IsValueType())
@@ -38,19 +38,19 @@ namespace Newtonsoft.Json.Utilities
 			return () => (T)constructorInfo.Invoke(null);
 		}
 
-		public override Func<T, object> CreateGet<T>(PropertyInfo propertyInfo)
+		public override Newtonsoft.Json.Serialization.Func<T, object> CreateGet<T>(PropertyInfo propertyInfo)
 		{
 			ValidationUtils.ArgumentNotNull(propertyInfo, "propertyInfo");
 			return (T o) => propertyInfo.GetValue(o, null);
 		}
 
-		public override Func<T, object> CreateGet<T>(FieldInfo fieldInfo)
+		public override Newtonsoft.Json.Serialization.Func<T, object> CreateGet<T>(FieldInfo fieldInfo)
 		{
 			ValidationUtils.ArgumentNotNull(fieldInfo, "fieldInfo");
 			return (T o) => fieldInfo.GetValue(o);
 		}
 
-		public override Action<T, object> CreateSet<T>(FieldInfo fieldInfo)
+		public override Newtonsoft.Json.Serialization.Action<T, object> CreateSet<T>(FieldInfo fieldInfo)
 		{
 			ValidationUtils.ArgumentNotNull(fieldInfo, "fieldInfo");
 			return delegate(T o, object v)
@@ -59,7 +59,7 @@ namespace Newtonsoft.Json.Utilities
 			};
 		}
 
-		public override Action<T, object> CreateSet<T>(PropertyInfo propertyInfo)
+		public override Newtonsoft.Json.Serialization.Action<T, object> CreateSet<T>(PropertyInfo propertyInfo)
 		{
 			ValidationUtils.ArgumentNotNull(propertyInfo, "propertyInfo");
 			return delegate(T o, object v)

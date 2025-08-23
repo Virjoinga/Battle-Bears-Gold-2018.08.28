@@ -11,12 +11,12 @@ namespace Newtonsoft.Json.Utilities.LinqBridge
 
 		private readonly List<Comparison<T>> _comparisons;
 
-		public OrderedEnumerable(IEnumerable<T> source, Func<T, K> keySelector, IComparer<K> comparer, bool descending)
+		public OrderedEnumerable(IEnumerable<T> source, Newtonsoft.Json.Serialization.Func<T, K> keySelector, IComparer<K> comparer, bool descending)
 			: this(source, (List<Comparison<T>>)null, keySelector, comparer, descending)
 		{
 		}
 
-		private OrderedEnumerable(IEnumerable<T> source, List<Comparison<T>> comparisons, Func<T, K> keySelector, IComparer<K> comparer, bool descending)
+		private OrderedEnumerable(IEnumerable<T> source, List<Comparison<T>> comparisons, Newtonsoft.Json.Serialization.Func<T, K> keySelector, IComparer<K> comparer, bool descending)
 		{
 			if (source == null)
 			{
@@ -36,7 +36,7 @@ namespace Newtonsoft.Json.Utilities.LinqBridge
 			_comparisons = comparisons;
 		}
 
-		public IOrderedEnumerable<T> CreateOrderedEnumerable<KK>(Func<T, KK> keySelector, IComparer<KK> comparer, bool descending)
+		public IOrderedEnumerable<T> CreateOrderedEnumerable<KK>(Newtonsoft.Json.Serialization.Func<T, KK> keySelector, IComparer<KK> comparer, bool descending)
 		{
 			return new OrderedEnumerable<T, KK>(_source, _comparisons, keySelector, comparer, descending);
 		}

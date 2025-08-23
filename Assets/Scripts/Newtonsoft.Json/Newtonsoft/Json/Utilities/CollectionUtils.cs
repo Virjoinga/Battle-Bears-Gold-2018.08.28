@@ -114,7 +114,7 @@ namespace Newtonsoft.Json.Utilities
 			throw new Exception("Can not create DictionaryWrapper for type {0}.".FormatWith(CultureInfo.InvariantCulture, dictionary.GetType()));
 		}
 
-		public static object CreateAndPopulateList(Type listType, Action<IList, bool> populateList)
+		public static object CreateAndPopulateList(Type listType, Newtonsoft.Json.Serialization.Action<IList, bool> populateList)
 		{
 			ValidationUtils.ArgumentNotNull(listType, "listType");
 			ValidationUtils.ArgumentNotNull(populateList, "populateList");
@@ -234,7 +234,7 @@ namespace Newtonsoft.Json.Utilities
 			return result;
 		}
 
-		public static int IndexOf<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
+		public static int IndexOf<T>(this IEnumerable<T> collection, Newtonsoft.Json.Serialization.Func<T, bool> predicate)
 		{
 			int num = 0;
 			foreach (T item in collection)
