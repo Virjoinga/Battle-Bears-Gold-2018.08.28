@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class ICamera : MonoBehaviour
 {
-	protected CameraType _cameraType;
+	protected SkyVuEngine.Core.Camera.CameraType _cameraType;
 
 	public bool IsPlayerFriendly { get; private set; }
 
-	public CameraType CameraType
+	public SkyVuEngine.Core.Camera.CameraType CameraType
 	{
 		get
 		{
