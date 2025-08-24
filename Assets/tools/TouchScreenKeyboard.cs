@@ -1,6 +1,4 @@
-﻿namespace keyboardPC
-{
-#if UNITY_STANDALONE || UNITY_EDITOR
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
 using UnityEngine;
 
 public class TouchScreenKeyboard : MonoBehaviour
@@ -153,4 +151,3 @@ public class TouchScreenKeyboard : MonoBehaviour
     }
 }
 #endif
-}
