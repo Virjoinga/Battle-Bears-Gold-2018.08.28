@@ -1392,11 +1392,11 @@ public class MainMenu : MonoBehaviour
     {
         if (b.name == "main_gearUp" || b.name == "customize_gearUp" || b.name == "chooseGame_gearUp" || b.name == "main_stats")
         {
-            (characterMountpoint.GetComponentInChildren(typeof(TouchRotator)) as TouchRotator).OnSetTarget(360f);
+            //  (characterMountpoint.GetComponentInChildren(typeof(TouchRotator)) as TouchRotator).OnSetTarget(360f);
         }
         if (b.name == "gearUp_main" || b.name == "chooseGame_main" || b.name == "stats_main")
         {
-            (characterMountpoint.GetComponentInChildren(typeof(TouchRotator)) as TouchRotator).OnSetTarget(180f);
+            //  (characterMountpoint.GetComponentInChildren(typeof(TouchRotator)) as TouchRotator).OnSetTarget(180f);
         }
     }
 
