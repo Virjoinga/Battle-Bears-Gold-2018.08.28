@@ -694,28 +694,23 @@ public class ServiceManager : MonoBehaviour, ServiceInterface
     {
         Platform = "android";
     }
-    private string FORCE_PHOTON_REGION = null;
+
     public void UpdateForceMatchingServerForPlatform(string platform)
     {
-        if (!string.IsNullOrEmpty(FORCE_PHOTON_REGION))
-            return;
-
-        // Map platforms to Photon regions
-        if (platform.Contains("NA") || platform.Contains("US"))
-            FORCE_PHOTON_REGION = "us";
-        else if (platform.Contains("EU"))
-            FORCE_PHOTON_REGION = "eu";
-        else if (platform.Contains("ASIA"))
-            FORCE_PHOTON_REGION = "asia";
-        else if (platform.Contains("AU"))
-            FORCE_PHOTON_REGION = "au";
-        else
-            FORCE_PHOTON_REGION = "us"; // default
-
-        // Connect using that region
-        PhotonNetwork.ConnectUsingSettings(FORCE_PHOTON_REGION);
-        Debug.Log("Photon region forced to: " + FORCE_PHOTON_REGION);
+        /*	if (!string.IsNullOrEmpty(FORCE_MATCH_SERVER))
+            {
+                return;
+            }
+            List<Server> list = GetServers("match");
+            foreach (Server item in list)
+            {
+                if (item.description.Contains(platform))
+                {
+                    FORCE_MATCH_SERVER = item.url;
+                }
+            }*/
     }
+
     public List<Server> GetServers(string type)
     {
         if (!servers.ContainsKey(type))
@@ -865,27 +860,12 @@ public class ServiceManager : MonoBehaviour, ServiceInterface
 
     private string GetMatchmakingServerRootUrl(int index)
     {
-        // Map "index" to a Photon region
-        string[] regions = new string[] { "us", "eu", "asia", "au" };
-
         if (Preferences.Instance.CurrentGameMode == GameMode.ROYL)
         {
-
-            return "us";
+            return GetServers("royale")[index].url;
         }
-
-        if (!string.IsNullOrEmpty(FORCE_MATCH_SERVER))
-        {
-            return FORCE_MATCH_SERVER;
-        }
-
-
-        if (index >= 0 && index < regions.Length)
-            return regions[index];
-
-        return "us";
+        return (!string.IsNullOrEmpty(FORCE_MATCH_SERVER)) ? FORCE_MATCH_SERVER : GetServers("match")[index].url;
     }
-
 
     public string GetLastMatchServerUsed()
     {
